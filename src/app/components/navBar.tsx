@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
 import "@/styles/NavBar.css";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { ThemeToggle } from "../ui/ThemeToggle";
-import { div } from "framer-motion/client";
 
 const navItems = [
   { name: "About", href: "about" },
@@ -20,14 +19,14 @@ export const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleSmoothScroll = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    targetId: string
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+    targetId: string,
   ) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      const headerOffset = 80;
+      const headerOffset = 100; // Slightly more offset for floating nav
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;
@@ -38,35 +37,32 @@ export const NavBar = () => {
       });
     }
 
-    // Close mobile menu after clicking
     setIsMenuOpen(false);
   };
 
-  // Handle logo click - scroll to top
   const handleLogoClick = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
     setIsMenuOpen(false);
+    setActiveSection("");
   };
 
-  // Track scroll position and active section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      setIsScrolled(scrollPosition > 20);
 
-      // Determine active section based on scroll position
       const sections = navItems.map((item) => item.href);
       let currentSection = "";
 
-      // Check each section to see which one is currently in view
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
-          const threshold = window.innerHeight * 0.3; // 30% of viewport
+          // Adjust threshold for better detection
+          const threshold = window.innerHeight * 0.4;
 
           if (rect.top <= threshold && rect.bottom >= threshold) {
             currentSection = sectionId;
@@ -75,15 +71,13 @@ export const NavBar = () => {
         }
       }
 
-      // If we're at the very top, clear active section
-      if (scrollPosition < 100) {
+      if (scrollPosition < 50) {
         currentSection = "";
       }
 
       setActiveSection(currentSection);
     };
 
-    // Throttle scroll events for performance
     let ticking = false;
     const throttledHandleScroll = () => {
       if (!ticking) {
@@ -96,8 +90,6 @@ export const NavBar = () => {
     };
 
     window.addEventListener("scroll", throttledHandleScroll, { passive: true });
-
-    // Initial call to set correct state
     handleScroll();
 
     return () => window.removeEventListener("scroll", throttledHandleScroll);
@@ -117,99 +109,118 @@ export const NavBar = () => {
   }, [isMenuOpen]);
 
   return (
-    <>
+    <div className={`nav-wrapper ${isScrolled ? "nav-scrolled" : ""}`}>
       <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`nav ${isScrolled ? "nav-scrolled" : "nav-transparent"}`}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        className={`nav-pill ${isMenuOpen ? "menu-open" : ""}`}
       >
-        <div className="nav-container">
-          <div className="nav-content">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="nav-logo"
-              onClick={handleLogoClick}
-            >
-              TA
-            </motion.div>
-            <div className="nav-desktop">
-              {navItems.map((item) => (
-                <div key={item.name}>
-                  <motion.button
-                    onClick={(e) => handleSmoothScroll(e, item.href)}
-                    className={`nav-item ${
-                      activeSection === item.href
-                        ? "nav-item-active"
-                        : "nav-item-inactive"
-                    }`}
-                    // className="nav-item"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.name}
-                  </motion.button>
-                </div>
-              ))}
-              <ThemeToggle />
-            </div>
-
-            {/* mobile menu toggle */}
-            <motion.button
-              className="nav-mobile-toggle"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={isMenuOpen}
-            >
-              <div className="nav-mobile-icon">
-                <IoIosMenu
-                  className={`icon ${
-                    isMenuOpen ? "menu-hidden" : "menu-visible"
-                  }`}
-                />
-                <IoCloseOutline
-                  className={`icon ${
-                    isMenuOpen ? "close-visible" : "close-hidden"
-                  }`}
-                />
+        {/* Mobile Header Row (Visible when menu is open) */}
+        <div className={`mobile-header-row ${isMenuOpen ? "" : "mobile-only"}`}>
+          {/* If menu is open, this row is visible inside the column layout. 
+               If menu is closed, we need the toggle button to be visible, but that's handled by the 'mobile-toggle' button below.
+               Actually, the 'mobile-header-row' logic in CSS handles hiding/showing based on 'menu-open'.
+               But here, to replicate the pill structure when open, we might need to duplicate the logo?
+               
+               Let's simplify:
+               When closed: Row is [Logo ... DesktopItems ... MobileToggle]
+               When open: Column is [HeaderRow(Logo...Toggle) ... MobileItems]
+           */}
+          {/* Render Logo and Close button inside header row when open */}
+          {isMenuOpen && (
+            <>
+              <div className="nav-logo-container" onClick={handleLogoClick}>
+                <span className="nav-logo-text">TA</span>
               </div>
-            </motion.button>
-
-            {/* Mobile menu dropdown */}
-            <motion.div
-              className={`nav-mobile-menu ${isMenuOpen ? "open" : "closed"}`}
-              initial={false}
-              animate={isMenuOpen ? "open" : "closed"}
-              variants={{
-                open: { opacity: 1, maxHeight: 300, y: 0 },
-                closed: { opacity: 0, maxHeight: 0, y: -10 },
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <div className="nav-mobile-content">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.href}
-                    onClick={(e) => handleSmoothScroll(e, item.href)}
-                    className={`nav-mobile-link ${
-                      activeSection === item.href ? "active" : ""
-                    }`}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
-                  >
-                    {item.name}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+              <button
+                className="mobile-toggle"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <IoCloseOutline size={24} />
+              </button>
+            </>
+          )}
         </div>
+
+        {/* Regular Logo (Visible when closed) */}
+        {!isMenuOpen && (
+          <div className="nav-logo-container" onClick={handleLogoClick}>
+            <span className="nav-logo-text">TA</span>
+          </div>
+        )}
+
+        <div className="nav-divider desktop-only"></div>
+
+        {/* Desktop Items */}
+        <div className="nav-items-container">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href;
+            return (
+              <button
+                key={item.href}
+                onClick={(e) => handleSmoothScroll(e, item.href)}
+                className={`nav-link ${isActive ? "active" : ""}`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activePill"
+                    className="nav-active-pill"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <span className="nav-link-text">{item.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="nav-divider desktop-only"></div>
+
+        {/* Theme Toggle (Desktop) */}
+        <div className="desktop-only">
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile Toggle Button (Visible when closed) */}
+        {!isMenuOpen && (
+          <button
+            className="mobile-toggle"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <IoIosMenu size={24} />
+          </button>
+        )}
+
+        {/* Mobile Menu Content (Expanded Pill) */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mobile-menu-content mobile-only"
+            >
+              {navItems.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={(e) => handleSmoothScroll(e, item.href)}
+                  className={`mobile-nav-link ${
+                    activeSection === item.href ? "active" : ""
+                  }`}
+                >
+                  {item.name}
+                </button>
+              ))}
+              <div className="nav-mobile-footer">
+                <ThemeToggle />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
-      {/* Mobile-only theme toggle (fixed bottom-right via ThemeToggle.css) */}
-      <div className="theme-toggle-mobile-wrapper">
-        <ThemeToggle />
-      </div>
-    </>
+    </div>
   );
 };
