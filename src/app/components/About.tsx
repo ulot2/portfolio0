@@ -75,9 +75,9 @@ export const About = () => {
           {/* Stats/Tags Card */}
           <motion.div
             className="col-span-1 md:col-span-1 md:row-span-1 bg-white/60 backdrop-blur-xl border border-white/40 rounded-3xl p-6 shadow-sm flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800/40 dark:border-white/5 dark:shadow-md"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             <h3 className="text-xl font-bold text-slate-800 mb-4 dark:text-slate-100">

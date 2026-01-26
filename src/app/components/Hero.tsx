@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -16,17 +15,13 @@ export const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-950 z-10 pt-24 md:pt-0"
       id="hero"
     >
-      {/* Aurora Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute rounded-full blur-[80px] opacity-60 animate-aurora bg-teal-400 w-[50vw] h-[50vw] -top-[10%] -left-[10%] z-10 dark:bg-teal-800 dark:opacity-30"></div>
-        <div className="absolute rounded-full blur-[80px] opacity-60 animate-aurora bg-indigo-400 w-[40vw] h-[40vw] -bottom-[10%] -right-[5%] z-20 delay-[-5s] dark:bg-indigo-700 dark:opacity-30"></div>
-        <div className="absolute rounded-full blur-[80px] opacity-40 animate-aurora bg-pink-400 w-[30vw] h-[30vw] top-[40%] left-[40%] z-30 duration-[25s] dark:bg-pink-800 dark:opacity-20"></div>
-      </div>
+      {/* Grid Background similar to Skills section */}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       <div className="w-full max-w-[1200px] px-6 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12 md:gap-16 items-center">
         {/* Left Side: Text Content */}
         <motion.div
-          className="text-center flex flex-col items-center md:text-left md:items-start"
+          className="text-center flex flex-col items-center md:text-left md:items-start z-10"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -70,25 +65,70 @@ export const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right Side: Visual/Image */}
-        <motion.div
-          className="relative flex justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative w-full max-w-[450px] md:max-w-[320px] lg:max-w-[450px] aspect-square bg-white/20 backdrop-blur-xl border border-white/30 rounded-4xl p-6 shadow-xl flex items-center justify-center overflow-hidden dark:bg-slate-800/30 dark:border-white/10 dark:shadow-2xl">
-            <div className="relative w-full h-full rounded-3xl overflow-hidden">
-              <Image
-                src="/images/port-img.jpg"
-                alt="Toluwalope Adegoke"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
+        {/* Right Side: Abstract Geometric Visual */}
+        <div className="relative flex justify-center items-center h-[400px] md:h-auto">
+          {/* Abstract Shape 1: Main Gradient Blob */}
+          <motion.div
+            className="absolute w-[280px] h-[280px] md:w-[350px] md:h-[350px] bg-linear-to-tr from-teal-400/30 to-blue-500/30 rounded-full blur-3xl dark:from-teal-500/20 dark:to-indigo-500/20"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.1, 1],
+              rotate: [0, 90, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+
+          {/* Abstract Shape 2: Glassmorphism Card */}
+          <motion.div
+            className="relative z-10 w-48 h-48 md:w-64 md:h-64 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl flex items-center justify-center p-6 rotate-12 dark:bg-slate-800/20 dark:border-white/10"
+            initial={{ opacity: 0, y: 50, rotate: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: 12 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            whileHover={{
+              scale: 1.05,
+              rotate: 15,
+              transition: { duration: 0.3 },
+            }}
+          >
+            <div className="w-full h-full border border-white/30 rounded-2xl flex items-center justify-center dark:border-white/10">
+              <div className="w-16 h-16 rounded-full bg-linear-to-br from-teal-400 to-blue-600 opacity-80" />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Abstract Shape 3: Floating Circle Small */}
+          <motion.div
+            className="absolute -top-10 right-10 md:top-0 md:right-0 w-24 h-24 bg-blue-400/20 rounded-full blur-xl backdrop-blur-sm z-0"
+            animate={{
+              y: [-20, 20, -20],
+              x: [10, -10, 10],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Abstract Shape 4: Floating Pill */}
+          <motion.div
+            className="absolute -bottom-5 left-5 md:bottom-10 md:left-10 w-32 h-12 bg-teal-400/20 rounded-full blur-lg backdrop-blur-sm border border-white/10 z-20"
+            animate={{
+              y: [15, -15, 15],
+              rotate: [-5, 5, -5],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+        </div>
       </div>
 
       {/* Scroll Indicator */}

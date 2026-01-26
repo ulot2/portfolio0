@@ -1,57 +1,73 @@
 import React from "react";
-import { LuGithub } from "react-icons/lu";
-import { MdOutlineEmail } from "react-icons/md";
-import { LuLinkedin } from "react-icons/lu";
-import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import { LuGithub, LuLinkedin } from "react-icons/lu";
+import { FaXTwitter } from "react-icons/fa6";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <section className="py-8 bg-linear-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 dark:text-slate-200">
-      <div className="text-center mx-auto px-4 max-w-[1000px]">
-        <h3 className="text-2xl font-bold mb-2">Toluwalope Adegoke</h3>
-        <p className="text-base text-gray-500 dark:text-gray-400">
-          Frontend Developer | Building Modern Web Experiences
+    <footer className="bg-white border-t border-slate-100 dark:bg-slate-950 dark:border-slate-900 py-12">
+      <div className="general-container flex flex-col items-center">
+        {/* Brand Section */}
+        <Link
+          href="/"
+          className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-4"
+        >
+          Toluwalope<span className="text-teal-600">.</span>
+        </Link>
+
+        <p className="text-slate-500 dark:text-slate-400 text-center max-w-lg leading-relaxed mb-8">
+          Crafting digital experiences with a focus on performance,
+          accessibility, and user-centric design.
         </p>
-        <div className="flex justify-center gap-4 mt-4">
-          <Link
+
+        {/* Social Icons */}
+        <div className="flex gap-6 mb-12">
+          <a
             href="https://github.com/ulot2"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 text-2xl transition-colors duration-300 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400"
+            className="text-slate-400 hover:text-slate-900 transition-colors duration-300 text-2xl dark:hover:text-white"
+            title="GitHub"
           >
             <LuGithub />
-          </Link>
-          <Link
-            href="mailto:tolu.nuell@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 text-2xl transition-colors duration-300 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400"
-          >
-            <MdOutlineEmail />
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://www.linkedin.com/in/toluwalope-adegoke-b441b9380"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 text-2xl transition-colors duration-300 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400"
+            className="text-slate-400 hover:text-blue-600 transition-colors duration-300 text-2xl"
+            title="LinkedIn"
           >
             <LuLinkedin />
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://x.com/Tolu_dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 text-2xl transition-colors duration-300 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400"
+            className="text-slate-400 hover:text-black transition-colors duration-300 text-2xl dark:hover:text-white"
+            title="X (Twitter)"
           >
             <FaXTwitter />
-          </Link>
+          </a>
         </div>
-        <p className="mt-4 text-sm text-gray-400 dark:text-gray-500">
-          &copy; {new Date().getFullYear()} Toluwalope Adegoke. All rights
-          reserved.
-        </p>
+
+        {/* Bottom Bar */}
+        <div className="w-full pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400 dark:text-slate-500">
+          <p className="text-center md:text-left">
+            &copy; {currentYear} Toluwalope Adegoke. All rights reserved.
+          </p>
+          <div className="flex gap-8">
+            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">
+              Privacy Policy
+            </span>
+            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">
+              Terms of Service
+            </span>
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 };

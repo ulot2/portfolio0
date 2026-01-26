@@ -2,8 +2,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { IoLogoHtml5 } from "react-icons/io";
-import { SiTailwindcss } from "react-icons/si";
-import { RiNextjsLine } from "react-icons/ri";
+import {
+  SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiCss3,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiPrisma,
+  SiGit,
+  SiGithub,
+  SiFigma,
+} from "react-icons/si";
+// import { RiNextjsLine } from "react-icons/ri"; // Using SiNextdotjs for consistency if preferred, but existing code used RiNextjsLine. I'll stick to what I can or replace with better icons if needed.
 
 interface Skill {
   name: string;
@@ -13,77 +28,87 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: "HTML5", icon: <IoLogoHtml5 />, color: "text-orange-600" },
-  { name: "CSS3", icon: "🎨", color: "text-blue-600" },
-  { name: "JavaScript", icon: "⚡", color: "text-yellow-600" },
-  { name: "React", icon: "⚛️", color: "text-blue-500" },
+  { name: "CSS3", icon: <SiCss3 />, color: "text-blue-600" },
+  { name: "JavaScript", icon: <SiJavascript />, color: "text-yellow-500" },
+  { name: "TypeScript", icon: <SiTypescript />, color: "text-blue-500" },
+  { name: "React", icon: <SiReact />, color: "text-cyan-400" },
   {
     name: "Next.js",
-    icon: <RiNextjsLine />,
-    color: "text-gray-800 dark:text-gray-200",
+    icon: <SiNextdotjs />,
+    color: "text-black dark:text-white",
   },
-  { name: "TailwindCSS", icon: <SiTailwindcss />, color: "text-teal-600" },
+  { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-500" },
+  {
+    name: "Prisma",
+    icon: <SiPrisma />,
+    color: "text-teal-700 dark:text-teal-300",
+  },
+  { name: "Git", icon: <SiGit />, color: "text-orange-500" },
+  { name: "GitHub", icon: <SiGithub />, color: "text-black dark:text-white" },
+  { name: "Figma", icon: <SiFigma />, color: "text-purple-500" },
 ];
 
 export const Skills = () => {
   return (
-    <section className="general-box bg-slate-50 dark:bg-slate-950" id="skills">
-      <div className="general-container">
+    <section
+      className="py-24 bg-slate-50 dark:bg-slate-950 overflow-hidden relative"
+      id="skills"
+    >
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+      <div className="general-container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-slate-900 mb-2 dark:text-slate-50">
-            Skills & Technologies
+          <span className="inline-block py-1 px-3 rounded-full bg-teal-100/50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-sm font-medium mb-4 border border-teal-200 dark:border-teal-800">
+            My Tech Stack
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+            Turning "What If" into "What's Next"
           </h2>
-          <div className="section-divider"></div>
-          <p className="section-description">
-            Here are some of the skills and technologies I work with:
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            You have the concept. I have the stack. Let’s ship it together.
           </p>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto mt-12"
-        >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-              className="group p-6 backdrop-blur-xl bg-white/80 border border-white/20 shadow-lg rounded-2xl min-w-[140px] text-center transition-all duration-300 cursor-pointer mb-8 hover:shadow-xl hover:scale-110 hover:-translate-y-2 dark:bg-slate-900 dark:border-slate-800 dark:hover:shadow-2xl"
-            >
-              <motion.div
-                className="text-4xl mb-2 flex justify-center"
-                animate={{
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                }}
+
+        <div className="relative w-full max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+          <motion.div
+            className="flex gap-8 w-max"
+            animate={{
+              x: ["0%", "-50%"],
+            }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[...skills, ...skills].map((skill, index) => (
+              <div
+                key={`${skill.name}-${index}`}
+                className="relative group flex items-center gap-4 px-8 py-6 bg-white/5 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200/50 dark:border-slate-800/50 rounded-2xl hover:border-teal-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(20,184,166,0.2)]"
               >
-                {skill.icon}
-              </motion.div>
-              <h3
-                className={`transition-transform duration-200 group-hover:scale-110 font-semibold ${skill.color}`}
-              >
-                {skill.name}
-              </h3>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div
+                  className={`text-4xl ${skill.color} transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}
+                >
+                  {skill.icon}
+                </div>
+                <span className="text-xl font-semibold text-slate-700 dark:text-slate-200">
+                  {skill.name}
+                </span>
+
+                {/* Subtle glow effect on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 via-teal-500/5 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Reverse direction row for variety if desired in future, strictly one row for now as per design "Infinite Marquee" usually implies one strong row or two opposing. I'll stick to one robust one first. */}
       </div>
     </section>
   );

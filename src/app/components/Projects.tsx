@@ -12,9 +12,10 @@ export const Projects = () => {
 
   return (
     <section
-      className="general-box bg-slate-50/50 dark:bg-slate-900"
+      className="relative min-h-screen py-24 overflow-hidden bg-slate-50 dark:bg-slate-950"
       id="projects"
     >
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] pointer-events-none"></div>
       <div className="w-full max-w-[800px] mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
