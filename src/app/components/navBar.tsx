@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
-import "@/styles/NavBar.css";
+import { motion, AnimatePresence } from "framer-motion";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { ThemeToggle } from "../ui/ThemeToggle";
@@ -109,32 +108,33 @@ export const NavBar = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className={`nav-wrapper ${isScrolled ? "nav-scrolled" : ""}`}>
+    <div
+      className={`fixed top-6 left-0 right-0 flex justify-center z-1000 pointer-events-none px-4 transition-all duration-300 md:top-6 ${isScrolled ? "top-4" : ""}`}
+    >
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className={`nav-pill ${isMenuOpen ? "menu-open" : ""}`}
+        className={`pointer-events-auto flex items-center gap-4 py-2 px-3 bg-white/65 backdrop-blur-xl border border-white/30 rounded-full shadow-sm transition-all duration-400 min-w-min dark:bg-slate-900/65 dark:border-white/10 dark:shadow-md ${
+          isMenuOpen ? "flex-col items-stretch rounded-3xl gap-0 p-2" : ""
+        } ${isScrolled ? "bg-white/85! shadow-lg dark:bg-slate-900/85!" : ""}`}
       >
         {/* Mobile Header Row (Visible when menu is open) */}
-        <div className={`mobile-header-row ${isMenuOpen ? "" : "mobile-only"}`}>
-          {/* If menu is open, this row is visible inside the column layout. 
-               If menu is closed, we need the toggle button to be visible, but that's handled by the 'mobile-toggle' button below.
-               Actually, the 'mobile-header-row' logic in CSS handles hiding/showing based on 'menu-open'.
-               But here, to replicate the pill structure when open, we might need to duplicate the logo?
-               
-               Let's simplify:
-               When closed: Row is [Logo ... DesktopItems ... MobileToggle]
-               When open: Column is [HeaderRow(Logo...Toggle) ... MobileItems]
-           */}
-          {/* Render Logo and Close button inside header row when open */}
+        <div
+          className={`flex justify-between items-center w-full p-2 mb-2 border-b border-black/5 dark:border-white/5 ${isMenuOpen ? "flex" : "hidden md:hidden"}`}
+        >
           {isMenuOpen && (
             <>
-              <div className="nav-logo-container" onClick={handleLogoClick}>
-                <span className="nav-logo-text">TA</span>
+              <div
+                className="flex items-center justify-center px-2 cursor-pointer"
+                onClick={handleLogoClick}
+              >
+                <span className="font-bold text-lg tracking-tight text-slate-800 dark:text-slate-50">
+                  TA
+                </span>
               </div>
               <button
-                className="mobile-toggle"
+                className="p-2 bg-transparent border-none cursor-pointer text-slate-500 rounded-full transition-colors hover:bg-black/5 dark:text-slate-400 dark:hover:bg-white/5"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close menu"
               >
@@ -146,47 +146,52 @@ export const NavBar = () => {
 
         {/* Regular Logo (Visible when closed) */}
         {!isMenuOpen && (
-          <div className="nav-logo-container" onClick={handleLogoClick}>
-            <span className="nav-logo-text">TA</span>
+          <div
+            className="flex items-center justify-center px-2 cursor-pointer"
+            onClick={handleLogoClick}
+          >
+            <span className="font-bold text-lg tracking-tight text-slate-800 dark:text-slate-50">
+              TA
+            </span>
           </div>
         )}
 
-        <div className="nav-divider desktop-only"></div>
+        <div className="w-px h-6 bg-black/10 mx-1 hidden md:block dark:bg-white/10"></div>
 
         {/* Desktop Items */}
-        <div className="nav-items-container">
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = activeSection === item.href;
             return (
               <button
                 key={item.href}
                 onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`nav-link ${isActive ? "active" : ""}`}
+                className={`relative py-2 px-4 text-sm font-medium text-slate-500 bg-transparent border-none cursor-pointer rounded-full transition-colors z-10 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 ${isActive ? "text-slate-900 dark:text-slate-50" : ""}`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activePill"
-                    className="nav-active-pill"
+                    className="absolute inset-0 bg-white rounded-full -z-10 shadow-sm dark:bg-slate-800 dark:shadow-md"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
-                <span className="nav-link-text">{item.name}</span>
+                <span className="relative z-10">{item.name}</span>
               </button>
             );
           })}
         </div>
 
-        <div className="nav-divider desktop-only"></div>
+        <div className="w-px h-6 bg-black/10 mx-1 hidden md:block dark:bg-white/10"></div>
 
         {/* Theme Toggle (Desktop) */}
-        <div className="desktop-only">
+        <div className="hidden md:block">
           <ThemeToggle />
         </div>
 
         {/* Mobile Toggle Button (Visible when closed) */}
         {!isMenuOpen && (
           <button
-            className="mobile-toggle"
+            className="md:hidden flex items-center justify-center p-2 bg-transparent border-none cursor-pointer text-slate-500 rounded-full transition-colors hover:bg-black/5 dark:text-slate-400 dark:hover:bg-white/5"
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open menu"
           >
@@ -201,20 +206,22 @@ export const NavBar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="mobile-menu-content mobile-only"
+              className="flex flex-col gap-1 p-2 w-full md:hidden"
             >
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={(e) => handleSmoothScroll(e, item.href)}
-                  className={`mobile-nav-link ${
-                    activeSection === item.href ? "active" : ""
+                  className={`flex items-center py-3 px-4 rounded-xl text-base font-medium text-slate-500 no-underline bg-transparent border-none cursor-pointer text-left transition-all active:bg-black/5 active:scale-[0.98] dark:text-slate-400 dark:active:bg-white/5 ${
+                    activeSection === item.href
+                      ? "bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-slate-50 dark:shadow-md"
+                      : ""
                   }`}
                 >
                   {item.name}
                 </button>
               ))}
-              <div className="nav-mobile-footer">
+              <div className="flex justify-center pt-2 border-t border-black/5 mt-2 dark:border-white/5">
                 <ThemeToggle />
               </div>
             </motion.div>

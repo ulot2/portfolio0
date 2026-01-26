@@ -1,56 +1,59 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@import "tailwindcss";
+
+@theme {
+  --font-mono:
+    var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-primary: #14b8a6;
+
+  --animate-aurora: aurora-move 20s infinite alternate
+    cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-wheel-bounce: wheel-bounce 2s infinite;
+
+  @keyframes aurora-move {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(10%, 15%) scale(1.1);
+    }
+  }
+
+  @keyframes wheel-bounce {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  }
 }
 
-body,
-.nav,
-#projects,
-#contact,
-#skills,
-.hero-section,
-#about {
-  transition: background 0.5s, color 0.5s;
+/* Custom variant for the existing dark theme class */
+@custom-variant dark (&:where(.dark-theme, .dark-theme *));
+
+@layer base {
+  body {
+    @apply transition-colors duration-500 font-mono;
+  }
 }
 
-body {
-  font-family: var(--font-plex-mono), monospace;
-}
+@layer components {
+  .general-box {
+    @apply py-20;
+  }
 
-body.dark-theme {
-  color: #fff;
-}
+  .general-container {
+    @apply w-full max-w-[1000px] mx-auto px-4;
+  }
 
-.general-box {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
+  .section-divider {
+    @apply w-24 h-1 bg-teal-500 mx-auto rounded-full;
+  }
 
-.general-container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.section-divider {
-  width: 6rem;
-  height: 0.25rem;
-  background-color: #14b8a6;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 3rem;
-}
-
-.section-description {
-  font-size: 1.125rem;
-  color: #4b5563;
-  max-width: 42rem;
-  margin: 1rem auto;
-}
-
-.dark-theme .section-description {
-  color: #e2e8f0;
+  .section-description {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto dark:text-slate-200 mt-4 mb-4;
+  }
 }
