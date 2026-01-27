@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ThemeToggle } from "../ui/ThemeToggle";
+import { ThemeDropdown } from "./ThemeDropdown";
 
 const navItems = [
   { name: "About", href: "about" },
@@ -13,6 +13,11 @@ const navItems = [
 export const NavBar = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
@@ -88,6 +93,10 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", throttledHandleScroll);
   }, []);
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div
       className={`fixed top-6 left-0 right-0 flex justify-center z-1000 pointer-events-none px-2 transition-all duration-300 md:top-6 md:px-4 ${isScrolled ? "top-4" : ""}`}
@@ -134,7 +143,7 @@ export const NavBar = () => {
         <div className="w-px h-6 bg-black/10 mx-1 block dark:bg-white/10"></div>
 
         <div className="block">
-          <ThemeToggle />
+          <ThemeDropdown />
         </div>
       </motion.nav>
     </div>

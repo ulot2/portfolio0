@@ -21,7 +21,8 @@
 }
 
 /* Custom variant for the existing dark theme class */
-@variant dark (&:where(.dark-theme, .dark-theme *));
+/* Custom variant removed in favor of standard 'dark' class */
+@variant dark (&:where(.dark, .dark *));
 
 @layer base {
   body {

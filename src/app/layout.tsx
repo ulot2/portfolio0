@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-
-
+import { Providers } from "./providers";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -21,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={plexMono.variable}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
