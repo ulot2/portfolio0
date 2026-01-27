@@ -9,17 +9,11 @@ import {
   SiCss3,
   SiReact,
   SiNextdotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiPostgresql,
   SiPrisma,
   SiGit,
   SiGithub,
   SiFigma,
 } from "react-icons/si";
-// import { RiNextjsLine } from "react-icons/ri"; // Using SiNextdotjs for consistency if preferred, but existing code used RiNextjsLine. I'll stick to what I can or replace with better icons if needed.
-
 interface Skill {
   name: string;
   icon: string | React.ReactNode;
@@ -54,7 +48,7 @@ export const Skills = () => {
       className="py-24 bg-slate-50 dark:bg-slate-950 overflow-hidden relative"
       id="skills"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
       <div className="general-container relative z-10">
         <motion.div
@@ -71,11 +65,11 @@ export const Skills = () => {
             Turning "What If" into "What's Next"
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            You have the concept. I have the stack. Let’s ship it together.
+            You have the concept. I have the stack. Let's ship it together.
           </p>
         </motion.div>
 
-        <div className="relative w-full max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+        <div className="relative w-full max-w-7xl mx-auto overflow-hidden mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
           <motion.div
             className="flex gap-8 w-max"
             animate={{
@@ -102,7 +96,7 @@ export const Skills = () => {
                 </span>
 
                 {/* Subtle glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 via-teal-500/5 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-teal-500/0 via-teal-500/5 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             ))}
           </motion.div>

@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Nextdotjs"]
+  "cSpell.words": ["biblio", "jkwq", "Nextdotjs", "promptnest"],
+  "css.lint.unknownAtRules": "ignore"
 }

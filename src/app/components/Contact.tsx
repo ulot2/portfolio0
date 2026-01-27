@@ -225,11 +225,12 @@ export const Contact = () => {
               </div>
 
               {/* Status Messages */}
-              <div className="min-h-[2rem]">
+              <div className="min-h-8">
                 {status === "success" && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
                     className="flex items-center gap-2 text-green-600 dark:text-green-400 mt-2"
                   >
                     <IoIosCheckmark className="text-xl" />
@@ -242,6 +243,7 @@ export const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
                     className="flex items-center gap-2 text-red-600 dark:text-red-400 mt-2"
                   >
                     <IoIosClose className="text-xl" />

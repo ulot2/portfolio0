@@ -15,7 +15,6 @@ export const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-950 z-10 pt-24 md:pt-0"
       id="hero"
     >
-      {/* Grid Background similar to Skills section */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       <div className="w-full max-w-[1200px] px-6 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12 md:gap-16 items-center">
@@ -65,9 +64,7 @@ export const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right Side: Abstract Geometric Visual */}
         <div className="relative flex justify-center items-center h-[400px] md:h-auto">
-          {/* Abstract Shape 1: Main Gradient Blob */}
           <motion.div
             className="absolute w-[280px] h-[280px] md:w-[350px] md:h-[350px] bg-linear-to-tr from-teal-400/30 to-blue-500/30 rounded-full blur-3xl dark:from-teal-500/20 dark:to-indigo-500/20"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -83,7 +80,6 @@ export const Hero = () => {
             }}
           />
 
-          {/* Abstract Shape 2: Glassmorphism Card */}
           <motion.div
             className="relative z-10 w-48 h-48 md:w-64 md:h-64 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl flex items-center justify-center p-6 rotate-12 dark:bg-slate-800/20 dark:border-white/10"
             initial={{ opacity: 0, y: 50, rotate: 0 }}
@@ -100,7 +96,6 @@ export const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Abstract Shape 3: Floating Circle Small */}
           <motion.div
             className="absolute -top-10 right-10 md:top-0 md:right-0 w-24 h-24 bg-blue-400/20 rounded-full blur-xl backdrop-blur-sm z-0"
             animate={{
@@ -114,7 +109,6 @@ export const Hero = () => {
             }}
           />
 
-          {/* Abstract Shape 4: Floating Pill */}
           <motion.div
             className="absolute -bottom-5 left-5 md:bottom-10 md:left-10 w-32 h-12 bg-teal-400/20 rounded-full blur-lg backdrop-blur-sm border border-white/10 z-20"
             animate={{
@@ -131,7 +125,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-70"
         initial={{ opacity: 0 }}
