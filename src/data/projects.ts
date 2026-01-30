@@ -40,14 +40,14 @@ export const projects: Project[] = [
     id: 2,
     title: "BiblioQuest",
     description:
-      "A book discovery platform that helps users find books based on their interests and preferences.",
+      "BiblioQuest is an immersive 'Infinite' Text Adventure platform designed to push the boundaries of procedural storytelling.",
     fullDescription:
       "BiblioQuest is an immersive 'Infinite' Text Adventure platform designed to push the boundaries of procedural storytelling. Built with a focus on narrative depth over traditional combat, the project leverages AI to create a living world where players navigate intricate story arcs and solve logic-based puzzles.\n\nKey features include:\n\nDynamic Narrative Engine: A system that adapts the story in real-time based on player decisions, ensuring no two playthroughs are the same.\n\nInteraction-First Gameplay: Replaces standard combat loops with complex dialogue systems and environmental puzzles.\n\nCustom Quest Architecture: Allows for the integration of tailored quests and specific story modes, providing a structured yet boundless exploration experience.\n\nTech Stack: Developed using Next.js for a seamless UI/UX and integrated with advanced AI models to handle natural language generation and world-building logic.",
     image: "/images/biblio-main.png",
     image2: "/images/biblio-1.png",
     image3: "/images/biblio-2.png",
     technologies: ["Next.js", "Tailwind CSS", "Google Books API", "Groq AI"],
-    liveUrl: "https://biblio-quest.vercel.app/",
+    liveUrl: "https://biblioquest-gilt.vercel.app/",
     githubUrl: "https://github.com/ulot2/biblio-quest.git",
   },
   {
@@ -55,10 +55,11 @@ export const projects: Project[] = [
     title: "Weather app",
     description:
       "A weather application that provides real-time updates and detailed forecasts, helping users stay informed about current conditions with ease.",
-    fullDescription: "wow",
+    fullDescription:
+      "A sleek, modern weather application built with React and OpenWeather API. This project features a dynamic user interface that displays current weather conditions, hourly forecasts, and extended daily outlooks. Users can search for any city worldwide and receive detailed meteorological data, including temperature, humidity, wind speed, and precipitation probability. The design emphasizes clarity and ease of use, making it simple for anyone to check the weather at a glance.",
     image: "/images/weather.png",
-    image2: "/images/weather1.png",
-    image3: "/images/weather2.png",
+    image2: "/images/weather-1.png",
+    image3: "/images/weather-2.png",
     technologies: ["React", "CSS", "OpenWeather API"],
     liveUrl: "https://weather-app-tolu.vercel.app/",
     githubUrl: "https://github.com/ulot2/weather-app.git",
@@ -76,6 +77,21 @@ export const projects: Project[] = [
     technologies: ["Next.js", "motion/react", "Tailwind CSS"],
     liveUrl: "https://thrive-forge.vercel.app/",
     githubUrl: "https://github.com/ulot2/Browser-Extensions.git",
+  },
+
+  {
+    id: 7,
+    title: "Ville Dishes",
+    description:
+      "A landing page for a restaurant called Ville Dishes, built with Nextjs and Tailwind CSS.",
+    fullDescription:
+      "Ville Dishes is a premium restaurant landing page built with Next.js and Tailwind CSS. It features a modern, responsive design with smooth scroll animations and a stunning hero section that captures the essence of a fine dining experience. The page includes a detailed menu section of mouth-watering dishes, delivery process and a CTA.",
+    image: "/images/ville-main.png",
+    image2: "/images/ville-1.png",
+    image3: "/images/ville-2.png",
+    technologies: ["Nextjs", "Tailwind CSS"],
+    liveUrl: "https://ville-dishes.vercel.app/",
+    githubUrl: "https://github.com/ulot2/ville-dishes.git",
   },
 
   {
@@ -104,19 +120,5 @@ export const projects: Project[] = [
     technologies: ["React", "CSS"],
     liveUrl: "https://age-calculator-ulot2.vercel.app/",
     githubUrl: "https://github.com/ulot2/age-calculator.git",
-  },
-
-  {
-    id: 7,
-    title: "Product Cart",
-    description:
-      "An interactive product cart site that lets users browse items, add them to their cart, update quantities, and smoothly proceed to checkout.",
-    fullDescription: "wow",
-    image: "/images/product-cart.png",
-    image2: "/images/product-cart-1.png",
-    image3: "/images/product-cart-2.png",
-    technologies: ["Vite", "React", "CSS"],
-    liveUrl: "https://product-cart-bay.vercel.app/",
-    githubUrl: "https://github.com/ulot2/product-cart.git",
   },
 ];

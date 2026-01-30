@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["biblio", "jkwq", "Nextdotjs", "playthroughs", "promptnest"],
+  "cSpell.words": [
+    "biblio",
+    "jkwq",
+    "Nextdotjs",
+    "playthroughs",
+    "promptnest",
+    "Ville"
+  ],
   "css.lint.unknownAtRules": "ignore"
 }
