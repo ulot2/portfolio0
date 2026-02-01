@@ -63,7 +63,7 @@ export default function ProjectDetailsPage() {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-semibold text-sm hover:bg-primary/90 transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-background rounded-full font-semibold text-sm hover:bg-primary/90 transition-colors"
             >
               Visit Live <LuExternalLink size={16} />
             </a>

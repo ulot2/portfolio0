@@ -81,10 +81,10 @@ export const Projects = () => {
         >
           <Link
             href="/projects"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-full font-sans font-medium overflow-hidden transition-transform active:scale-95"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-background rounded-full font-sans font-medium overflow-hidden transition-transform active:scale-95"
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-            <span className="relative z-10">View Archive</span>
+            <span className="relative z-10">View all projects</span>
             <LuArrowRight
               className="relative z-10 transition-transform group-hover:translate-x-1"
               size={20}

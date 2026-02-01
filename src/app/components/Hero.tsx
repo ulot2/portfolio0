@@ -86,7 +86,7 @@ export const Hero = () => {
             }}
           >
             Creative <br />
-            <span className="text-cta relative inline-block">
+            <span className="text-blue-600 relative inline-block">
               Developer
               <svg
                 className="absolute w-full h-3 -bottom-1 left-0 text-cta/20"
@@ -121,10 +121,10 @@ export const Hero = () => {
           >
             <button
               onClick={() => scrollToSection("projects")}
-              className="group relative px-8 py-4 bg-primary text-white font-sans font-medium rounded-full overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-lg active:scale-95"
+              className="group relative px-8 py-4 bg-primary text-background font-sans font-medium rounded-full overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-lg active:scale-95"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <span className="relative z-10">View Selected Work</span>
+              <span className="relative z-10">View My Projects</span>
             </button>
 
             <button

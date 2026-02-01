@@ -51,19 +51,20 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ulot2/biblio-quest.git",
   },
   {
-    id: 3,
-    title: "Weather app",
+    id: 7,
+    title: "Ville Dishes",
     description:
-      "A weather application that provides real-time updates and detailed forecasts, helping users stay informed about current conditions with ease.",
+      "A landing page for a restaurant called Ville Dishes, built with Nextjs and Tailwind CSS.",
     fullDescription:
-      "A sleek, modern weather application built with React and OpenWeather API. This project features a dynamic user interface that displays current weather conditions, hourly forecasts, and extended daily outlooks. Users can search for any city worldwide and receive detailed meteorological data, including temperature, humidity, wind speed, and precipitation probability. The design emphasizes clarity and ease of use, making it simple for anyone to check the weather at a glance.",
-    image: "/images/weather.png",
-    image2: "/images/weather-1.png",
-    image3: "/images/weather-2.png",
-    technologies: ["React", "CSS", "OpenWeather API"],
-    liveUrl: "https://weather-app-tolu.vercel.app/",
-    githubUrl: "https://github.com/ulot2/weather-app.git",
+      "Ville Dishes is a premium restaurant landing page built with Next.js and Tailwind CSS. It features a modern, responsive design with smooth scroll animations and a stunning hero section that captures the essence of a fine dining experience. The page includes a detailed menu section of mouth-watering dishes, delivery process and a CTA.",
+    image: "/images/ville-main.png",
+    image2: "/images/ville-1.png",
+    image3: "/images/ville-2.png",
+    technologies: ["Nextjs", "Tailwind CSS"],
+    liveUrl: "https://ville-dishes.vercel.app/",
+    githubUrl: "https://github.com/ulot2/ville-dishes.git",
   },
+
   {
     id: 4,
     title: "Thrive Forge",
@@ -80,18 +81,18 @@ export const projects: Project[] = [
   },
 
   {
-    id: 7,
-    title: "Ville Dishes",
+    id: 3,
+    title: "Weather app",
     description:
-      "A landing page for a restaurant called Ville Dishes, built with Nextjs and Tailwind CSS.",
+      "A weather application that provides real-time updates and detailed forecasts, helping users stay informed about current conditions with ease.",
     fullDescription:
-      "Ville Dishes is a premium restaurant landing page built with Next.js and Tailwind CSS. It features a modern, responsive design with smooth scroll animations and a stunning hero section that captures the essence of a fine dining experience. The page includes a detailed menu section of mouth-watering dishes, delivery process and a CTA.",
-    image: "/images/ville-main.png",
-    image2: "/images/ville-1.png",
-    image3: "/images/ville-2.png",
-    technologies: ["Nextjs", "Tailwind CSS"],
-    liveUrl: "https://ville-dishes.vercel.app/",
-    githubUrl: "https://github.com/ulot2/ville-dishes.git",
+      "A sleek, modern weather application built with React and OpenWeather API. This project features a dynamic user interface that displays current weather conditions, hourly forecasts, and extended daily outlooks. Users can search for any city worldwide and receive detailed meteorological data, including temperature, humidity, wind speed, and precipitation probability. The design emphasizes clarity and ease of use, making it simple for anyone to check the weather at a glance.",
+    image: "/images/weather.png",
+    image2: "/images/weather-1.png",
+    image3: "/images/weather-2.png",
+    technologies: ["React", "CSS", "OpenWeather API"],
+    liveUrl: "https://weather-app-tolu.vercel.app/",
+    githubUrl: "https://github.com/ulot2/weather-app.git",
   },
 
   {

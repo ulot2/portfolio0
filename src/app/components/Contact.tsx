@@ -211,7 +211,7 @@ export const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-white text-lg font-medium font-sans rounded-full overflow-hidden transition-all hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-background text-lg font-medium font-sans rounded-full overflow-hidden transition-all hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-1">
                     {loading ? "Sending Message..." : "Send Message"}
