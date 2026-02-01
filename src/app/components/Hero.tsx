@@ -14,9 +14,10 @@ export const Hero = () => {
   const { scrollY } = useScroll();
 
   // Parallax effects
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  // Parallax effects
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -50]);
+  const opacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   // Mouse move effect for background
   const mouseX = useMotionValue(0);
@@ -45,7 +46,7 @@ export const Hero = () => {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background z-10"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background z-10 pt-32 md:pt-0"
       id="hero"
     >
       {/* Dynamic Background Grid */}
@@ -139,7 +140,7 @@ export const Hero = () => {
         {/* Right Content - Visual/Abstract */}
         <motion.div
           className="relative h-[400px] lg:h-[500px] flex items-center justify-center perspective-[2000px] mt-8 lg:mt-0"
-          style={{ y: y2, opacity }}
+          style={{ y: y2 }}
         >
           {/* Abstract Glow */}
           <div className="absolute w-[600px] h-[600px] bg-cta/10 rounded-full blur-3xl animate-pulse" />

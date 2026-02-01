@@ -99,7 +99,7 @@ export const NavBar = () => {
 
   return (
     <div
-      className={`fixed top-6 left-0 right-0 flex justify-center z-1000 pointer-events-none px-2 transition-all duration-300 md:top-6 md:px-4 ${isScrolled ? "top-4" : ""}`}
+      className={`fixed top-6 left-0 right-0 flex justify-center z-[100] pointer-events-none px-2 transition-all duration-300 md:top-6 md:px-4 ${isScrolled ? "top-4" : ""}`}
     >
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
@@ -116,16 +116,16 @@ export const NavBar = () => {
           </span>
         </div>
 
-        <div className="w-px h-5 bg-secondary/10 mx-2 block"></div>
+        <div className="w-px h-5 bg-secondary/10 mx-2 hidden md:block"></div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 md:gap-1">
           {navItems.map((item) => {
             const isActive = activeSection === item.href;
             return (
               <button
                 key={item.href}
                 onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`relative py-1.5 px-3 text-sm font-sans font-medium text-secondary/80 bg-transparent border-none cursor-pointer rounded-full transition-colors z-10 hover:text-primary md:px-4 ${isActive ? "text-primary dark:text-zinc-100" : ""}`}
+                className={`relative py-1.5 px-2 text-xs font-sans font-medium text-secondary/80 bg-transparent border-none cursor-pointer rounded-full transition-colors z-10 hover:text-primary md:px-4 md:text-sm ${isActive ? "text-primary dark:text-zinc-100" : ""}`}
               >
                 {isActive && (
                   <motion.div
@@ -140,7 +140,7 @@ export const NavBar = () => {
           })}
         </div>
 
-        <div className="w-px h-5 bg-secondary/10 mx-2 block"></div>
+        <div className="w-px h-5 bg-secondary/10 mx-2 hidden md:block"></div>
 
         <div className="block">
           <ThemeDropdown />
