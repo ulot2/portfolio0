@@ -7,17 +7,17 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-slate-100 dark:bg-slate-950 dark:border-slate-900 py-12">
-      <div className="general-container flex flex-col items-center">
+    <footer className="bg-background border-t border-secondary/10 py-12">
+      <div className="general-container flex flex-col items-center w-full max-w-7xl mx-auto px-6">
         {/* Brand Section */}
         <Link
           href="/"
-          className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-4"
+          className="text-2xl font-bold font-display tracking-tight text-primary mb-4"
         >
-          Toluwalope<span className="text-teal-600">.</span>
+          Toluwalope<span className="text-cta">.</span>
         </Link>
 
-        <p className="text-slate-500 dark:text-slate-400 text-center max-w-lg leading-relaxed mb-8">
+        <p className="text-secondary font-sans text-center max-w-lg leading-relaxed mb-8">
           Crafting digital experiences with a focus on performance,
           accessibility, and user-centric design.
         </p>
@@ -28,7 +28,7 @@ export const Footer = () => {
             href="https://github.com/ulot2"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-slate-900 transition-colors duration-300 text-2xl dark:hover:text-white"
+            className="text-secondary hover:text-primary transition-colors duration-300 text-2xl hover:-translate-y-1 transform"
             title="GitHub"
           >
             <LuGithub />
@@ -37,7 +37,7 @@ export const Footer = () => {
             href="https://www.linkedin.com/in/toluwalope-adegoke-b441b9380"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-blue-600 transition-colors duration-300 text-2xl"
+            className="text-secondary hover:text-cta transition-colors duration-300 text-2xl hover:-translate-y-1 transform"
             title="LinkedIn"
           >
             <LuLinkedin />
@@ -46,7 +46,7 @@ export const Footer = () => {
             href="https://x.com/Tolu_dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-black transition-colors duration-300 text-2xl dark:hover:text-white"
+            className="text-secondary hover:text-primary transition-colors duration-300 text-2xl hover:-translate-y-1 transform"
             title="X (Twitter)"
           >
             <FaXTwitter />
@@ -54,18 +54,10 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="w-full pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400 dark:text-slate-500">
+        <div className="w-full pt-8 border-t border-secondary/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary/60 font-sans">
           <p className="text-center md:text-left">
             &copy; {currentYear} Toluwalope Adegoke. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">
-              Privacy Policy
-            </span>
-            <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">
-              Terms of Service
-            </span>
-          </div>
         </div>
       </div>
     </footer>

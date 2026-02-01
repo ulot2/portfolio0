@@ -67,8 +67,8 @@ export const Contact = () => {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-slate-950" id="contact">
-      <div className="general-container">
+    <section className="py-24 bg-background" id="contact">
+      <div className="general-container w-full max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column: Typography & Info */}
           <motion.div
@@ -79,13 +79,11 @@ export const Contact = () => {
             className="flex flex-col justify-between"
           >
             <div>
-              <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 dark:text-white leading-[1.1]">
+              <h2 className="text-5xl md:text-7xl font-bold font-display tracking-tight text-primary mb-8 leading-[1.1]">
                 Let's work <br />
-                <span className="text-teal-600 dark:text-teal-400">
-                  together.
-                </span>
+                <span className="text-cta">together.</span>
               </h2>
-              <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
+              <p className="text-lg md:text-xl text-secondary font-sans max-w-md leading-relaxed">
                 I'm currently available for freelance projects and open to
                 full-time opportunities.
               </p>
@@ -93,12 +91,12 @@ export const Contact = () => {
 
             <div className="mt-12 lg:mt-0">
               <div className="mb-8">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 dark:text-slate-500">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary/60 mb-4 font-sans">
                   Contact
                 </h3>
                 <a
                   href="mailto:tolu.nuell@gmail.com"
-                  className="text-2xl md:text-3xl font-medium text-slate-900 hover:text-teal-600 transition-colors dark:text-white dark:hover:text-teal-400 inline-flex items-center gap-2 group"
+                  className="text-2xl md:text-3xl font-medium font-display text-primary hover:text-cta transition-colors inline-flex items-center gap-2 group"
                 >
                   tolu.nuell@gmail.com
                   <FiArrowUpRight className="text-xl opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -106,7 +104,7 @@ export const Contact = () => {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 dark:text-slate-500">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary/60 mb-4 font-sans">
                   Socials
                 </h3>
                 <div className="flex gap-6">
@@ -116,7 +114,7 @@ export const Contact = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-600 hover:text-teal-600 transition-colors text-2xl dark:text-slate-400 dark:hover:text-teal-400"
+                      className="text-secondary hover:text-cta transition-colors text-2xl"
                       title={link.name}
                     >
                       {link.icon}
@@ -142,18 +140,18 @@ export const Contact = () => {
                     id="name"
                     name="name"
                     required
-                    className="w-full bg-transparent border-b border-slate-300 py-4 text-lg text-slate-900 focus:border-slate-900 outline-none transition-colors peer dark:border-slate-700 dark:text-white dark:focus:border-white placeholder-transparent"
+                    className="w-full bg-transparent border-b border-secondary/20 py-4 text-lg text-primary focus:border-primary outline-none transition-colors peer placeholder-transparent font-sans"
                     placeholder="Name"
                     onFocus={() => setFocusedInput("name")}
                     onBlur={() => setFocusedInput(null)}
                   />
                   <label
                     htmlFor="name"
-                    className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                    className={`absolute left-0 transition-all duration-300 pointer-events-none font-sans ${
                       focusedInput === "name" ||
                       (form.current?.name as any)?.value
-                        ? "-top-3 text-xs text-teal-600 dark:text-teal-400"
-                        : "top-4 text-lg text-slate-500 dark:text-slate-400"
+                        ? "-top-3 text-xs text-cta"
+                        : "top-4 text-lg text-secondary"
                     }`}
                   >
                     Your Name
@@ -166,18 +164,18 @@ export const Contact = () => {
                     id="email"
                     name="email"
                     required
-                    className="w-full bg-transparent border-b border-slate-300 py-4 text-lg text-slate-900 focus:border-slate-900 outline-none transition-colors peer dark:border-slate-700 dark:text-white dark:focus:border-white placeholder-transparent"
+                    className="w-full bg-transparent border-b border-secondary/20 py-4 text-lg text-primary focus:border-primary outline-none transition-colors peer placeholder-transparent font-sans"
                     placeholder="Email"
                     onFocus={() => setFocusedInput("email")}
                     onBlur={() => setFocusedInput(null)}
                   />
                   <label
                     htmlFor="email"
-                    className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                    className={`absolute left-0 transition-all duration-300 pointer-events-none font-sans ${
                       focusedInput === "email" ||
                       (form.current?.email as any)?.value
-                        ? "-top-3 text-xs text-teal-600 dark:text-teal-400"
-                        : "top-4 text-lg text-slate-500 dark:text-slate-400"
+                        ? "-top-3 text-xs text-cta"
+                        : "top-4 text-lg text-secondary"
                     }`}
                   >
                     Email Address
@@ -190,18 +188,18 @@ export const Contact = () => {
                     name="message"
                     required
                     rows={4}
-                    className="w-full bg-transparent border-b border-slate-300 py-4 text-lg text-slate-900 focus:border-slate-900 outline-none transition-colors resize-none peer dark:border-slate-700 dark:text-white dark:focus:border-white placeholder-transparent"
+                    className="w-full bg-transparent border-b border-secondary/20 py-4 text-lg text-primary focus:border-primary outline-none transition-colors resize-none peer placeholder-transparent font-sans"
                     placeholder="Message"
                     onFocus={() => setFocusedInput("message")}
                     onBlur={() => setFocusedInput(null)}
                   ></textarea>
                   <label
                     htmlFor="message"
-                    className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                    className={`absolute left-0 transition-all duration-300 pointer-events-none font-sans ${
                       focusedInput === "message" ||
                       (form.current?.message as any)?.value
-                        ? "-top-3 text-xs text-teal-600 dark:text-teal-400"
-                        : "top-4 text-lg text-slate-500 dark:text-slate-400"
+                        ? "-top-3 text-xs text-cta"
+                        : "top-4 text-lg text-secondary"
                     }`}
                   >
                     Your Message
@@ -213,7 +211,7 @@ export const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white text-lg font-medium rounded-full overflow-hidden transition-all hover:bg-slate-800 disabled:opacity-70 disabled:cursor-not-allowed dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-white text-lg font-medium font-sans rounded-full overflow-hidden transition-all hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-1">
                     {loading ? "Sending Message..." : "Send Message"}
@@ -231,7 +229,7 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="flex items-center gap-2 text-green-600 dark:text-green-400 mt-2"
+                    className="flex items-center gap-2 text-green-600 dark:text-green-400 mt-2 font-sans"
                   >
                     <IoIosCheckmark className="text-xl" />
                     <span className="text-sm font-medium">
@@ -244,7 +242,7 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="flex items-center gap-2 text-red-600 dark:text-red-400 mt-2"
+                    className="flex items-center gap-2 text-red-600 dark:text-red-400 mt-2 font-sans"
                   >
                     <IoIosClose className="text-xl" />
                     <span className="text-sm font-medium">

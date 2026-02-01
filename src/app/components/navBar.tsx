@@ -105,18 +105,18 @@ export const NavBar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className={`pointer-events-auto flex items-center gap-2 py-1.5 px-2 bg-white/65 backdrop-blur-xl border border-white/30 rounded-full shadow-sm transition-all duration-400 min-w-min md:gap-4 md:py-2 md:px-3 dark:bg-slate-900/65 dark:border-white/10 dark:shadow-md ${isScrolled ? "bg-white/85! shadow-lg dark:bg-slate-900/85!" : ""}`}
+        className={`pointer-events-auto flex items-center gap-2 py-2 px-3 bg-white/70 backdrop-blur-md border border-white/40 rounded-full shadow-sm transition-all duration-400 min-w-min md:gap-4 md:px-4 dark:bg-zinc-900/70 dark:border-white/10 dark:shadow-md ${isScrolled ? "bg-white/90! shadow-md dark:bg-zinc-900/90!" : ""}`}
       >
         <div
-          className="flex items-center justify-center px-2 cursor-pointer"
+          className="flex items-center justify-center px-1 cursor-pointer"
           onClick={handleLogoClick}
         >
-          <span className="font-bold text-base tracking-tight text-slate-800 md:text-lg dark:text-slate-50">
+          <span className="font-display font-bold text-lg tracking-tight text-primary md:text-xl transform transition-transform hover:scale-105 active:scale-95">
             TA
           </span>
         </div>
 
-        <div className="w-px h-6 bg-black/10 mx-1 block dark:bg-white/10"></div>
+        <div className="w-px h-5 bg-secondary/10 mx-2 block"></div>
 
         <div className="flex items-center gap-1">
           {navItems.map((item) => {
@@ -125,12 +125,12 @@ export const NavBar = () => {
               <button
                 key={item.href}
                 onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`relative py-2 px-2 text-xs font-medium text-slate-500 bg-transparent border-none cursor-pointer rounded-full transition-colors z-10 hover:text-slate-900 md:px-4 md:text-sm dark:text-slate-400 dark:hover:text-slate-50 ${isActive ? "text-slate-900 dark:text-slate-50" : ""}`}
+                className={`relative py-1.5 px-3 text-sm font-sans font-medium text-secondary/80 bg-transparent border-none cursor-pointer rounded-full transition-colors z-10 hover:text-primary md:px-4 ${isActive ? "text-primary dark:text-zinc-100" : ""}`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activePill"
-                    className="absolute inset-0 bg-white rounded-full -z-10 shadow-sm dark:bg-slate-800 dark:shadow-md"
+                    className="absolute inset-0 bg-white shadow-sm rounded-full -z-10 dark:bg-white/10"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -140,7 +140,7 @@ export const NavBar = () => {
           })}
         </div>
 
-        <div className="w-px h-6 bg-black/10 mx-1 block dark:bg-white/10"></div>
+        <div className="w-px h-5 bg-secondary/10 mx-2 block"></div>
 
         <div className="block">
           <ThemeDropdown />

@@ -19,23 +19,49 @@ export const ProjectCard = ({
   liveUrl,
 }: ProjectCardProps) => {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-4xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
-      <div className="relative w-full aspect-video mb-6 overflow-hidden rounded-3xl bg-slate-100">
-        <Image src={image} alt={title} fill className="object-cover" />
+    <div className="group h-full bg-white dark:bg-zinc-900 border border-secondary/10 rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col overflow-hidden">
+      {/* Image Container with Reveal Effect */}
+      <div className="relative w-full aspect-16/10 mb-5 overflow-hidden rounded-2xl bg-secondary/5">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
-      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-        {title}
-      </h3>
-      <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed mb-6 grow">
+
+      <div className="flex justify-between items-start mb-3">
+        <h3 className="text-xl font-bold font-display text-primary group-hover:text-cta transition-colors duration-300">
+          {title}
+        </h3>
+        {/* Optional: Add icon or year here if available */}
+      </div>
+
+      <p className="text-secondary font-sans text-sm leading-relaxed mb-6 grow line-clamp-3">
         {description}
       </p>
 
-      <Link
-        href={`/project/${id}`}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl text-slate-900 dark:text-white font-semibold transition-colors w-fit"
-      >
-        View Details <LuChevronRight size={20} />
-      </Link>
+      <div className="mt-auto flex items-center gap-4">
+        <Link
+          href={`/project/${id}`}
+          className="inline-flex items-center gap-2 text-sm font-medium font-sans text-primary hover:text-cta transition-colors"
+        >
+          View project details <LuChevronRight />
+        </Link>
+
+        {liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto px-4 py-2 text-xs font-bold uppercase tracking-wider bg-cta/10 text-cta rounded-full hover:bg-cta hover:text-white transition-colors"
+          >
+            Live Demo
+          </a>
+        )}
+      </div>
     </div>
   );
 };
